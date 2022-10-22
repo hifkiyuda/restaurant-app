@@ -2,6 +2,7 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import './components/app-bar';
 import data from '../DATA.json';
+import rotm from './utils/rotm.json';
 
 // restaurants data render
 const contentExplore = document.getElementById('contentExplore');
@@ -23,6 +24,31 @@ data.restaurants.forEach((restaurant) => {
     </article>
   `;
 });
+
+// restaurant of the month data render
+// sumber data: website The Urban List
+const rotmExplore = document.getElementById('rotmExplore');
+
+rotmExplore.innerHTML = '';
+
+rotm.restaurantOfTheMonth.forEach((rotm) => {
+  rotmExplore.innerHTML += `
+    <article class='rotm__item'>
+      <div class='rotm__image__wrapper'>
+        <img class='rotm__image' src='${rotm.pictureId}' alt='Restaurant of The Month'>
+      </div>
+      <div class='rotm__body'>
+        <h3 tabindex='0'>${rotm.name}</h3>
+        <p class='rotm__location' tabindex='0'>Location: ${rotm.location}</p>
+        <p tabindex='0'>${rotm.description}</p>
+        <br>
+        <p tabindex='0'>Visit:</p>
+        <a class='rotm__link' href='${rotm.link_satu}' target='_blank' tabindex='0'>The Urban List</a>
+        <a class='rotm__link' href='${rotm.link_dua}' target='_blank' tabindex='0'>${rotm.name}</a>
+      </div>
+    </article>
+  `;
+})
 
 // hamburger
 const hamburgerButtonElement = document.querySelector('#hamburger');
