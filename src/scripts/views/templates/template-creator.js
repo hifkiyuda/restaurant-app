@@ -8,7 +8,7 @@ const createRestaurantItemTemplate = (restaurant) => `
     </div>
     <div class='content__body'>
       <p tabindex='0'>Rating: ${restaurant.rating}</p>
-      <h3 class='content__name' tabindex='0'><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></h3>
+      <h3 class='content__name'><a tabindex='0' href="/#/detail/${restaurant.id}">${restaurant.name}</a></h3>
       <p tabindex='0'>${restaurant.description}</p>
     </div>
   </article>
@@ -20,16 +20,14 @@ const createRestaurantDetailTemplate = (restaurant) => `
       <img class='detail__image' src='${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}' alt='${restaurant.name}'>
     </div>
     <div class='detail__body'>
-      <h2>${restaurant.name}</h2>
-      <p class='detail__rating'>Rating: ${restaurant.rating}</p>
-      <p class='detail__location'>Location: ${restaurant.city}</p>
-      <p>${restaurant.description}</p>
+      <h2 tabindex='0'>${restaurant.name}</h2>
+      <p class='detail__rating' tabindex='0'>Rating: ${restaurant.rating}</p>
+      <p class='detail__location' tabindex='0'>Location: ${restaurant.city}</p>
+      <p tabindex='0'>${restaurant.description}</p>
     </div>
   </article>
 `;
 
-// restaurant of the month data render
-// sumber data: website The Urban List
 const createRestaurantOfTheMonthTemplate = (rotm) => `
   <article class='rotm__item'>
     <div class='rotm__image__wrapper'>

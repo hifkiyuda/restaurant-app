@@ -23,6 +23,8 @@ const Home = {
       restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
     });
 
+    // restaurant of the month data render
+    // sumber data: website The Urban List
     const restaurantOTM = rotm.restaurantOfTheMonth;
     const rotmContainer = document.getElementById('rotmContainer');
     restaurantOTM.forEach((rotm) => {

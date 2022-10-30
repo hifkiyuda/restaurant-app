@@ -5,7 +5,7 @@ class AppBar extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <h1 class='header__title' tabindex='0'><a href='/'>Tnaruatser.</a></h1>
+      <h1 class='header__title'><a tabindex='0' href='/'>Tnaruatser.</a></h1>
       <nav class='header__nav'>
         <button id='hamburger' aria-label='navigation-menu'>☰</button>
         <ul id='drawer'>
