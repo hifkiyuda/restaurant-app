@@ -54,7 +54,10 @@ img {
 }
 
 
-/* header */
+
+/* 
+ header 
+*/
 app-bar {
   display: flex;
   justify-content: space-between;
@@ -65,6 +68,11 @@ app-bar {
   width: 100%;
   background-color: var(--background);
   z-index: 100;
+}
+
+.header__title a {
+  padding: 2px;
+  font-family: 'PT Serif', serif;
 }
 
 .header__nav {
@@ -108,7 +116,10 @@ app-bar {
 }
 
 
-/* hero */
+
+/* 
+ hero 
+*/
 .hero {
   display: flex;
   align-items: center;
@@ -134,7 +145,10 @@ app-bar {
 }
 
 
-/* content */
+
+/* 
+ content 
+*/
 .content {
   margin: 0 10px;
   padding: 80px 0 0 0;
@@ -188,12 +202,18 @@ app-bar {
   padding: 10px 5px;
 }
 
-.content__name {
-  margin: 10px 0;
+.content__name a {
+  padding: 10px 0;
+  font-family: 'PT Serif', serif;
 }
 
 
-/* restaurant of the month */
+
+/* 
+ restaurant of the month 
+ &
+ detail
+*/
 .restaurant__of__the__month {
   margin: 0 10px;
   padding: 40px 0 0 0;
@@ -204,38 +224,46 @@ app-bar {
   text-align: center;
 }
 
-.rotm__inner {
+.rotm__inner,
+.detail__inner {
   padding: 20px 0;
 }
 
-.rotm__item {
+.rotm__item,
+.detail__item {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
-.rotm__image__wrapper {
+.rotm__image__wrapper,
+.detail__image__wrapper {
   height: 220px;
   overflow: hidden;
   border-radius: 5px;
   position: relative;
 }
 
-.rotm__image {
+.rotm__image,
+.detail__image {
   transition: all .2s ease-out;
   min-width: 100%;
   min-height: 100%;
 }
 
-.rotm__image__wrapper:hover .rotm__image {
+.rotm__image__wrapper:hover .rotm__image,
+.detail__image__wrapper:hover .detail__image {
   transform: scale(1.1);
 }
 
-.rotm__body {
+.rotm__body,
+.detail__body {
   padding: 10px 5px;
 }
 
-.rotm__location {
+.rotm__location,
+.detail__location,
+.detail__rating {
   font-style: italic;
   font-weight: 700;
 }
@@ -253,99 +281,11 @@ app-bar {
 }
 
 
-/* footer */
+
+/* 
+ footer 
+*/
 footer {
   text-align: center;
   padding: 40px;
-}
-
-
-/* responsive */
-@media screen and (min-width: 600px) {
-  app-bar {
-    padding: 0 30px;
-  }
-
-  .content {
-    padding: 80px 10px 10px 10px;
-  }
-
-  .content__inner {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 20px;
-  }
-
-  .restaurant__of__the__month {
-    padding: 40px 10px 10px 10px;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  app-bar {
-    padding: 0 40px;
-  }
-
-  .content {
-    padding: 80px 20px 20px 20px;
-  }
-
-  .hero__title {
-    font-size: 3rem;
-  }
-
-  .content__inner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-  }
-
-  #hamburger {
-    display: none;
-  }
-
-  #drawer {
-    position: unset;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-  }
-
-  #drawer li {
-    margin: 0 0 0 40px;
-    font-weight: 500;
-  }
-
-  .restaurant__of__the__month {
-    padding: 40px 20px 20px 20px;
-  }
-
-  .rotm__item {
-    flex-direction: row;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .rotm__image__wrapper {
-    width: 40%;
-    height: 320px;
-  }
-
-  .rotm__body {
-    width: 60%;
-    padding: 10px 20px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .hero {
-    min-width: 1000px;
-  }
-
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
 }
