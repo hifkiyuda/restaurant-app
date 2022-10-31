@@ -1,10 +1,12 @@
 import RestaurantSource from '../../data/restaurant-source';
 import { createRestaurantItemTemplate, createRestaurantOfTheMonthTemplate } from '../templates/template-creator';
 import rotm from '../../utils/rotm.json';
+import '../components/hero';
 
 const Home = {
   async render() {
     return `
+      <hero-element class='hero'></hero-element>
       <section class="content">
         <h2 class="content__title" tabindex="0">Explore Restaurant</h2>
         <div class="content__inner" id="restaurant"></div>

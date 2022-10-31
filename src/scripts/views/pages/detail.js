@@ -1,12 +1,11 @@
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
-import { createRestaurantDetailTemplate } from '../templates/template-creator';
+import { createLikeButtonTemplate, createRestaurantDetailTemplate, createRestaurantReviewsTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
     return `
       <section class="content">
-        <h2 class="content__title" tabindex="0">Detail Restaurant</h2>
         <div class="detail__inner" id="restaurant"></div>
       </section>
     `;
@@ -17,6 +16,14 @@ const Detail = {
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
     const restaurantContainer = document.getElementById('restaurant');
     restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+
+    const reviewContainer = document.querySelector('.review__list');
+    restaurant.customerReviews.forEach((review) => {
+      reviewContainer.innerHTML += createRestaurantReviewsTemplate(review);
+    });
+
+    const favoriteContainer = document.querySelector('.favorite__container');
+    favoriteContainer.innerHTML = createLikeButtonTemplate();
   },
 };
 

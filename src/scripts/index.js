@@ -7,7 +7,7 @@ import App from './views/App';
 // // hamburger
 const hamburgerButtonElement = document.querySelector('#hamburger');
 const drawerElement = document.querySelector('#drawer');
-const mainElement = document.querySelector('main');
+const mainElement = document.querySelector('#mainContent');
 
 const app = new App({
   button: hamburgerButtonElement,
