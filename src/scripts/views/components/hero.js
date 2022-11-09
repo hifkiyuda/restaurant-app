@@ -1,4 +1,4 @@
-class heroElement extends HTMLElement {
+class HeroElement extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -13,4 +13,4 @@ class heroElement extends HTMLElement {
   }
 }
 
-customElements.define('hero-element', heroElement);
+customElements.define('hero-element', HeroElement);

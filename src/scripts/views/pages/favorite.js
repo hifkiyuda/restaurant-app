@@ -1,15 +1,39 @@
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+import { createFailedTemplate, createLoadingTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
+import '../components/favorite';
+
 const Favorite = {
   async render() {
     return `
-      <section class="content">
-        <h2 class="content__title" tabindex="0">Favorite Restaurant</h2>
-        <div class="content__inner" id="restaurant"></div>
-      </section>
+      <div class='loading__container'></div>
+      <favorite-section class='favorite__main__section'></favorite-section>
     `;
   },
 
   async afterRender() {
-    console.log('helo');
+    const loadingContainer = document.querySelector('.loading__container');
+    const favoriteMainSection = document.querySelector('.favorite__main__section');
+    const restaurantsContainer = document.querySelector('#favoriteRestaurant');
+    const favoriteText = '<i tabindex="0">You don\'t have a favorite restaurant.</i>';
+
+    loadingContainer.innerHTML = createLoadingTemplate();
+    favoriteMainSection.style.display = 'none';
+
+    try {
+      const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+      restaurants.forEach((restaurant) => {
+        restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+
+      if (restaurants.length === 0) {
+        restaurantsContainer.innerHTML = favoriteText;
+      }
+
+      favoriteMainSection.style.display = 'block';
+      loadingContainer.style.display = 'none';
+    } catch (error) {
+      loadingContainer.innerHTML = createFailedTemplate(error);
+    }
   },
 };
 

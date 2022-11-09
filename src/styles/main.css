@@ -4,21 +4,25 @@
   --background: #eeeeee;
   --content: #111111;
   --on-grey: #999999;
+  --on-light-grey: #bbbbbb;
   --on-white: #ffffff;
   --on-lime: #00c800;
+  --on-red: #db0000;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* border: .1px solid blue; */
 }
 
 body {
   font-family: 'PT Serif', serif;
   background-color: var(--background);
   color: var(--content);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -86,6 +90,7 @@ app-bar {
   padding: 10px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 #drawer {
@@ -150,10 +155,13 @@ app-bar {
 /* 
  content 
 */
+main {
+  flex: 1;
+}
+
 .content {
   margin: 0 10px;
   padding: 80px 0 0 0;
-  border-bottom: 0.1px solid var(--on-grey);
 }
 
 .content__title {
@@ -232,7 +240,7 @@ app-bar {
 .restaurant__of__the__month {
   margin: 0 10px;
   padding: 40px 0 0 0;
-  border-bottom: 0.1px solid var(--on-grey);
+  border-top: 0.1px solid var(--on-grey);
 }
 
 .rotm__title {
@@ -276,9 +284,12 @@ app-bar {
 }
 
 .rotm__location,
-.detail__location,
-.detail__rating {
+.detail__location {
   font-style: italic;
+  font-weight: 700;
+}
+
+.detail__rating {
   font-weight: 700;
 }
 
@@ -306,7 +317,8 @@ app-bar {
 
 .restaurant__categories,
 .restaurant__menus,
-.restaurant__reviews {
+.restaurant__reviews,
+.add__new__review {
   padding: 5px;
 }
 
@@ -320,7 +332,7 @@ app-bar {
 }
 
 .review__item {
-  border: 1px solid #bbbbbb;
+  border: 1px solid var(--on-light-grey);
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
@@ -335,32 +347,27 @@ app-bar {
   padding: 5px 0;
 }
 
-.favorite__container {
-  display: inline-block;
-  margin: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  transition: all .2s ease-out;
-  background-color: #ff0000;
+.favorite__contaner, .favorite {
   width: 50px;
   height: 50px;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--on-red);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   border-radius: 50%;
-}
-
-.favorite__container:hover {
-  transform: scale(1.1);
-}
-
-.favorite__container .favorite {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+  border: 0;
+  z-index: 2;
   font-size: 25px;
-  width: 100%;
-  color: var(--on-white);
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.favorite__contaner, .favorite:hover {
+  transform: scale(1.1);
 }
 
 
@@ -370,5 +377,77 @@ app-bar {
 */
 footer {
   text-align: center;
-  padding: 40px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+  border-top: 0.1px solid var(--on-grey);
+}
+
+
+
+/* 
+  loading
+*/
+.loading__container {
+  margin-top: 100px;
+}
+
+.loading div {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--on-white);
+  border-top: 4px solid var(--on-lime);
+  border-bottom: 4px solid var(--on-red);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+.failed {
+  text-align: center;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+/* 
+ add new review
+*/
+.review__form label,
+.review__form textarea {
+  display: block;
+}
+
+.name__input,
+.review__input {
+  width: 100%;
+  border: 1px solid var(--on-grey);
+  border-radius: 5px;
+  background-color: var(--on-light-grey);
+  font-size: 1rem;
+  font-family: 'PT Serif', serif;
+  padding: 12px;
+  margin: 5px 0;
+}
+
+.submit__review {
+  padding: 12px 24px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--on-lime);
+  font-size: 1rem;
+  font-family: 'PT Serif', serif;
+  transition: all .2s ease-out;
+  cursor: pointer;
+}
+
+.submit__review:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 4px 8px var(--on-grey);
 }
