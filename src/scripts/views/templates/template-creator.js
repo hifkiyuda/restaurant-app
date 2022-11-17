@@ -4,7 +4,7 @@ const createRestaurantItemTemplate = (restaurant) => `
   <article class='content__item'>
     <div class='content__wrapper'>
       <p class='content__city' tabindex='0'>${restaurant.city}</p>
-      <img class='content__image' src=${CONFIG.BASE_IMAGE_URL + restaurant.pictureId} alt='${restaurant.name}'>
+      <img class='lazyload content__image' data-src=${CONFIG.BASE_IMAGE_URL + restaurant.pictureId} alt='${restaurant.name}'>
     </div>
     <div class='content__body'>
       <p tabindex='0' aria-label='rating'>★ ${restaurant.rating}</p>
@@ -17,8 +17,7 @@ const createRestaurantItemTemplate = (restaurant) => `
 const createRestaurantDetailTemplate = (restaurant) => `
   <article class='detail__item'>
     <div class='detail__image__wrapper'>
-      <img class='detail__image' src='${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}' alt='${restaurant.name}'>
-      <div class='favorite__container'></div>
+      <img class='lazyload detail__image' data-src='${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}' alt='${restaurant.name}'>
     </div>
     <div class='detail__body'>
       <h2 tabindex='0'>${restaurant.name}</h2>
@@ -59,7 +58,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
 const createRestaurantOfTheMonthTemplate = (rotm) => `
   <article class='rotm__item'>
     <div class='rotm__image__wrapper'>
-      <img class='rotm__image' src='${rotm.pictureId}' alt='Restaurant of The Month'>
+      <img class='lazyload rotm__image' data-src='${rotm.pictureId}' alt='Restaurant of The Month'>
     </div>
     <div class='rotm__body'>
       <h3 tabindex='0'>${rotm.name}</h3>
@@ -76,7 +75,10 @@ const createRestaurantOfTheMonthTemplate = (rotm) => `
 const createRestaurantReviewsTemplate = (review) => `
   <div class='review__item'>
     <p tabindex='0' class='review__date'>${review.date}</p>
-    <p tabindex='0' class='review__body'><strong>${review.name}:</strong> ${review.review}</p>
+    <p tabindex='0' class='review__body'>
+      <strong class='reviewer__name'>${review.name}:</strong> 
+      <p class='reviewer__review'>${review.review}</p>
+    </p>
   </div>
 `;
 

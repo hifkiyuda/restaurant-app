@@ -14,7 +14,7 @@ const Favorite = {
     const loadingContainer = document.querySelector('.loading__container');
     const favoriteMainSection = document.querySelector('.favorite__main__section');
     const restaurantsContainer = document.querySelector('#favoriteRestaurant');
-    const favoriteText = '<i tabindex="0">You don\'t have a favorite restaurant.</i>';
+    const favoriteText = '<i class="favorite__restaurants__is__empty" tabindex="0">You don\'t have a favorite restaurant.</i>';
 
     loadingContainer.innerHTML = createLoadingTemplate();
     favoriteMainSection.style.display = 'none';

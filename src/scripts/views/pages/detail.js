@@ -1,6 +1,6 @@
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
-import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
+import FavoriteButtonPresenter from '../../utils/favorite-button-presenter';
 import {
   createFailedTemplate,
   createLikeButtonTemplate,
@@ -9,11 +9,13 @@ import {
   createRestaurantReviewsTemplate,
 } from '../templates/template-creator';
 import '../components/detail';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 const Detail = {
   async render() {
     return `
       <div class='loading__container'></div>
+      <div class='favorite__container'></div>
       <detail-section class='detail__main__section'></detail-section>
     `;
   },
@@ -61,8 +63,9 @@ const Detail = {
       const favoriteContainer = document.querySelector('.favorite__container');
       favoriteContainer.innerHTML = createLikeButtonTemplate();
 
-      FavoriteButtonInitiator.init({
+      FavoriteButtonPresenter.init({
         favoriteButtonContainer: document.querySelector('.favorite__container'),
+        favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id: restaurant.id,
           name: restaurant.name,

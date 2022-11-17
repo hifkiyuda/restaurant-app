@@ -131,7 +131,7 @@ app-bar {
   align-items: center;
   width: 100%;
   min-height: 460px;
-  background-image: url('../public/images/heros/hero-image_1.jpg');
+  background-image: url('../public/images/hero-small.webp');
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -354,7 +354,7 @@ main {
   align-items: center;
   justify-content: center;
   background-color: var(--on-red);
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   border-radius: 50%;
